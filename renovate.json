@@ -1,7 +1,8 @@
 {
   "extends": ["config:base"],
-  "fileMatch": ["^Dockerfile$"],
-  "ignorePaths": ["*"],
+  "dockerfile": {
+    "fileMatch": ["^Dockerfile$"]
+  },
   "packageRules": [
     {
       "packagePatterns": ["*"],
