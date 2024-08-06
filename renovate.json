@@ -3,7 +3,6 @@
   "dockerfile": {
     "fileMatch": ["^Dockerfile$"]
   },
-  "ignorePaths": ["*"],
   "packageRules": [
     {
       "packagePatterns": ["*"],
