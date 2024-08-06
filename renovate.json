@@ -20,10 +20,12 @@
     {
       "matchBranchName": "main",
       "automerge": true
+      "requiredStatusChecks": null
     },
     {
       "matchBranchName": "konflux-internal-poc",
       "automerge": true
+      "requiredStatusChecks": null
     }
   ]
 }
