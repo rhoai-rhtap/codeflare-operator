@@ -15,5 +15,15 @@
   ],
   "automerge": true,
   "automergeType": "branch",
-  "enabledManagers": ["dockerfile"]
+  "enabledManagers": ["dockerfile"],
+  "branchRules": [
+    {
+      "matchBranchName": "main",
+      "automerge": true
+    },
+    {
+      "matchBranchName": "konflux-internal-poc",
+      "automerge": true
+    }
+  ]
 }
