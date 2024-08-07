@@ -1,11 +1,12 @@
 {
   "extends": ["config:base"],
+  "automerge": true,
+  "automergeType": "pr",
+  "automergeWhen": "always",
   "dockerfile": {
     "fileMatch": ["^Dockerfile$"],
     "enabled": true,
-    "ignoreTests": true,
-    "automergeType": "pr",
-    "automerge": true
+    "ignoreTests": true
   },
   "packageRules": [
     {
@@ -13,7 +14,6 @@
       "enabled": true
     }
   ],
-  "automerge": true,
   "enabledManagers": ["dockerfile"],
   "branchRules": [
     {
