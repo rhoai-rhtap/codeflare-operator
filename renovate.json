@@ -1,29 +1,9 @@
 {
-  "extends": ["config:base"],
-  "platformAutomerge": true,
-  "automerge": true,
-  "automergeType": "pr",
-  "automergeWhen": "always",
-  "dockerfile": {
-    "fileMatch": ["^Dockerfile$"],
-    "enabled": true,
-    "ignoreTests": true
-  },
-  "packageRules": [
-    {
-      "packagePatterns": ["*"],
-      "enabled": true
-    }
-  ],
   "enabledManagers": ["dockerfile"],
-  "branchRules": [
-    {
-      "matchBranchName": "main",
-      "automerge": true
-    },
-    {
-      "matchBranchName": "konflux-internal-poc",
-      "automerge": true
-    }
-  ]
+  "dockerfile": {
+    "enabled": true,
+    "ignoreTests": true,
+    "automergeType": "pr",
+    "automerge": true
+  }
 }
