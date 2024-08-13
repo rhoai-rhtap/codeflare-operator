@@ -15,7 +15,7 @@ COPY pkg/ pkg/
 USER root
 RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -tags strictfipsruntime -a -o manager main.go
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1018
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1052
 WORKDIR /
 COPY --from=builder /workspace/manager .
 
