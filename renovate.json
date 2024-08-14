@@ -8,6 +8,8 @@
   },
   "tekton": {
     "enabled": true,
-    "fileMatch": ["\\.yaml$", "\\.yml$"]
+    "fileMatch": ["\\.yaml$", "\\.yml$"],
+    "automergeType": "pr",
+    "automerge": true
   }
 }
