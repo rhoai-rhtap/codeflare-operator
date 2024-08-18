@@ -8,7 +8,11 @@
   },
   "tekton": {
     "enabled": true,
-    "fileMatch": ["\\.yaml$", "\\.yml$"],
+    "fileMatch": [
+      "^\\.tekton/.*\\.yaml$",
+      "\\.yaml$",
+      "\\.yml$"
+    ],
     "automergeType": "pr",
     "automerge": true
   }
