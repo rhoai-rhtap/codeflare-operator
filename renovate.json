@@ -13,6 +13,7 @@
       "\\.yaml$",
       "\\.yml$"
     ],
+    "ignoreTests": true,
     "automergeType": "pr",
     "automerge": true
   }
