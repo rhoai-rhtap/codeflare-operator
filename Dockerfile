@@ -1,6 +1,6 @@
 # Build the manager binary
 FROM registry.access.redhat.com/ubi8/go-toolset@sha256:907203b4ed450b6ad2b50912df801245b0146d87c593b77dbb6751293351a3d1 as builder
-
+#test-automerger
 WORKDIR /workspace
 # Copy the Go Modules manifests
 COPY go.mod go.mod
