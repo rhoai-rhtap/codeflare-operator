@@ -3,7 +3,7 @@
 
 #test-automerger
 
-FROM registry.access.redhat.com/ubi8/go-toolset@sha256:c2e8443126cf5c9e7f40c93a15f155f5290c04fd7073da2a69fb87588e85ad86 as builder
+FROM registry.access.redhat.com/ubi8/go-toolset@sha256:9ef622111d4c1dc47d2fa1da2f43552766301d25cbe264c54dd7f8348b6d52bd as builder
 
 
 WORKDIR /workspace
