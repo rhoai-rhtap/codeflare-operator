@@ -1,3 +1,0 @@
-metadata:
-  annotations:
-    pipelinesascode.tekton.dev/on-cel-expression: ' && !"bundle/manifests/rhods-operator.clusterserviceversion.yml".pathChanged()'
