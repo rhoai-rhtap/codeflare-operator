@@ -1,0 +1,7 @@
+composes:
+  - kind: ComposeSourcePulp
+    spec:
+      content_sets:
+        - rhel-8-for-x86_64-baseos-rpms
+        - rhel-8-for-x86_64-appstream-rpms
+    additional_args: {}
