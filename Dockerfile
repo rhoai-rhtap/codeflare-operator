@@ -1,5 +1,5 @@
 # Build the manager binary
-FROM registry.access.redhat.com/ubi8/go-toolset@sha256:09a49fc33f45e53b3233b6816e5b39ddb9eddd3238ff117d29915547523e6646 as builder
+FROM registry.access.redhat.com/ubi8/go-toolset@sha256:742ae6ec1aef3e7faae488c47695fb64964d342aefecf52d23bd9d5e6731d0b6 as builder
 
 #test
 #restets
