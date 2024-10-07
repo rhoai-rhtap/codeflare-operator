@@ -36,8 +36,6 @@ COPY . .
 COPY main.go main.go
 COPY pkg/ pkg/
 
-RUN git config --global --add safe.directory /workspace
-
 # Build
 USER root
 RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -tags strictfipsruntime -a -o manager main.go
