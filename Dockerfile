@@ -36,7 +36,6 @@ COPY . .
 COPY main.go main.go
 COPY pkg/ pkg/
 
-COPY .git .git
 RUN git config --global --add safe.directory /workspace
 
 # Build
