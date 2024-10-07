@@ -1,17 +1,43 @@
-# Build the manager binary
-FROM registry.access.redhat.com/ubi8/go-toolset@sha256:09a49fc33f45e53b3233b6816e5b39ddb9eddd3238ff117d29915547523e6646 as builder
+# Build arguments
+ARG SOURCE_CODE=.
+ARG CI_CONTAINER_VERSION="unknown"
 
-#test
-#restets
+FROM registry-proxy.engineering.redhat.com/rh-osbs/openshift-golang-builder:v1.22.2 AS golang
+
+FROM registry.redhat.io/ubi8/ubi:latest AS builder
+
+
+#RUN dnf upgrade -y && dnf install -y \
+  #  gcc \
+  #  make \
+   # openssl-devel \
+ #   git \
+  #  && dnf clean all && rm -rf /var/cache/yum
+
+# Install Go
+ENV PATH=/usr/local/go/bin:$PATH
+
+COPY --from=golang /usr/lib/golang /usr/local/go
+
 WORKDIR /workspace
+
 # Copy the Go Modules manifests
 COPY go.mod go.mod
 COPY go.sum go.sum
+# cache deps before building and copying source so that we don't need to re-download as much
+# and so that source changes don't invalidate our downloaded layer
 RUN go mod download
+
+# Copy the go source
+COPY . .
+
 
 # Copy the Go sources
 COPY main.go main.go
 COPY pkg/ pkg/
+
+COPY .git .git
+RUN git config --global --add safe.directory /workspace
 
 # Build
 USER root
