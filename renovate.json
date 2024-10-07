@@ -4,11 +4,13 @@
   "packageRules": [
     {
       "enabled": false,
+      "automerge": false,
       "baseBranches": ["rhoai-2.13"],
       "matchManagers": ["tekton", "dockerfile"]
     },
     {
       "enabled": true,
+      "automerge": true,
       "matchManagers": ["tekton", "dockerfile"]
     }
   ]
