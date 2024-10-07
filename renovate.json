@@ -1,20 +1,15 @@
 {
-  "enabledManagers": ["dockerfile", "tekton"],
-  "dockerfile": {
-    "enabled": true,
-    "ignoreTests": true,
-    "automergeType": "pr",
-    "automerge": true
-  },
-  "tekton": {
-    "enabled": true,
-    "fileMatch": [
-      "^\\.tekton/.*\\.yaml$",
-      "\\.yaml$",
-      "\\.yml$"
-    ],
-    "ignoreTests": true,
-    "automergeType": "pr",
-    "automerge": true
-  }
+  "extends": ["config:recommended"],
+  "branchPrefix": "konflux/",
+  "packageRules": [
+    {
+      "enabled": false,
+      "baseBranches": ["rhoai-2.13"],
+      "matchManagers": ["tekton", "dockerfile"]
+    },
+    {
+      "enabled": true,
+      "matchManagers": ["tekton", "dockerfile"]
+    }
+  ]
 }
