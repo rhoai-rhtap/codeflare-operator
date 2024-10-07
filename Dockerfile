@@ -4,7 +4,7 @@ ARG CI_CONTAINER_VERSION="unknown"
 
 FROM registry-proxy.engineering.redhat.com/rh-osbs/openshift-golang-builder:v1.22.2 AS golang
 
-FROM registry.redhat.io/ubi8/ubi:latest AS builder
+FROM registry.access.redhat.com/ubi8/ubi:latest AS builder
 
 
 RUN dnf upgrade -y && dnf install -y \
@@ -35,6 +35,8 @@ COPY . .
 # Copy the Go sources
 COPY main.go main.go
 COPY pkg/ pkg/
+
+RUN git config --global --add safe.directory /workspace
 
 # Build
 USER root
