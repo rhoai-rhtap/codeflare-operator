@@ -7,12 +7,12 @@ FROM registry-proxy.engineering.redhat.com/rh-osbs/openshift-golang-builder:v1.2
 FROM registry.redhat.io/ubi8/ubi:latest AS builder
 
 
-#RUN dnf upgrade -y && dnf install -y \
-  #  gcc \
-  #  make \
-   # openssl-devel \
- #   git \
-  #  && dnf clean all && rm -rf /var/cache/yum
+RUN dnf upgrade -y && dnf install -y \
+   gcc \
+   make \
+   openssl-devel \
+   git \
+  && dnf clean all && rm -rf /var/cache/yum
 
 # Install Go
 ENV PATH=/usr/local/go/bin:$PATH
