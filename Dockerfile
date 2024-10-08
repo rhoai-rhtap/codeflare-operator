@@ -6,6 +6,7 @@ FROM registry-proxy.engineering.redhat.com/rh-osbs/openshift-golang-builder:v1.2
 
 FROM registry.access.redhat.com/ubi8/ubi:latest AS builder
 
+ARG GOLANG_VERSION=1.22.2
 
 RUN dnf upgrade -y && dnf install -y \
    gcc \
