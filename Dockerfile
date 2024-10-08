@@ -48,3 +48,16 @@ COPY --from=builder /workspace/manager .
 
 USER 65532:65532
 ENTRYPOINT ["/manager"]
+
+LABEL com.redhat.component="odh-codeflare-operator-container" \
+      name="managed-open-data-hub/odh-codeflare-operator-container-rhel8" \
+      version="${CI_CONTAINER_VERSION}" \
+      git.url="${CI_CODEFLARE_OPERATOR_UPSTREAM_URL}" \
+      git.commit="${CI_CODEFLARE_OPERATOR_UPSTREAM_COMMIT}" \
+      summary="odh-codeflare-operator-container" \
+      io.openshift.expose-services="" \
+      io.k8s.display-name="odh-codeflare-operator-container" \
+      maintainer="['managed-open-data-hub@redhat.com']" \
+      description="Manages lifecycle of MCAD and InstaScale custom resources and associated Kubernetes resources" \
+      com.redhat.license_terms="https://www.redhat.com/licenses/Red_Hat_Standard_EULA_20191108.pdf"
+
