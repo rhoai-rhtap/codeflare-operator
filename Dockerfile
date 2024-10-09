@@ -2,7 +2,8 @@
 ARG SOURCE_CODE=.
 ARG CI_CONTAINER_VERSION="unknown"
 
-FROM registry-proxy.engineering.redhat.com/rh-osbs/openshift-golang-builder:v1.22.2 AS golang
+FROM registry-proxy.engineering.redhat.com/rh-osbs/openshift-golang-builder@sha256:9576ac41e16b2262d2871a4064394d650d73221ceb07d1877772fbe98c6f0b6f AS golang
+
 
 FROM registry.access.redhat.com/ubi8/ubi:latest AS builder
 
@@ -41,9 +42,13 @@ RUN git config --global --add safe.directory /workspace
 
 # Build
 USER root
-RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -tags strictfipsruntime -a -o manager main.go
+#RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -tags strictfipsruntime -a -o manager main.go
+RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 make go-build-for-image
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.10-1052.1724178568
+
+
+
+FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 WORKDIR /
 COPY --from=builder /workspace/manager .
 
@@ -61,4 +66,3 @@ LABEL com.redhat.component="odh-codeflare-operator-container" \
       maintainer="['managed-open-data-hub@redhat.com']" \
       description="Manages lifecycle of MCAD and InstaScale custom resources and associated Kubernetes resources" \
       com.redhat.license_terms="https://www.redhat.com/licenses/Red_Hat_Standard_EULA_20191108.pdf"
-
