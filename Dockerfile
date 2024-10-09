@@ -42,10 +42,8 @@ RUN git config --global --add safe.directory /workspace
 
 # Build
 USER root
-#RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -tags strictfipsruntime -a -o manager main.go
-RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 make go-build-for-image
 
-
+RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -tags strictfipsruntime -a -o manager main.go
 
 
 FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
