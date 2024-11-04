@@ -1,7 +1,7 @@
 # Build arguments
 ARG SOURCE_CODE=.
 ARG CI_CONTAINER_VERSION="unknown"
-#test-aoutomerger
+#test-automerger
 FROM registry-proxy.engineering.redhat.com/rh-osbs/openshift-golang-builder@sha256:9576ac41e16b2262d2871a4064394d650d73221ceb07d1877772fbe98c6f0b6f AS golang
 
 
