@@ -17,6 +17,8 @@ jobs:
           curl -O https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/pr.py
           curl -O https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/repos.json
           curl -O https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/requirements.txt
+          curl -O https://raw.githubusercontent.com/rhoai-rhtap/RHOAI-Konflux-Automation/main/Konflux-auto-merger/pcam-release.yaml
+          
 
       - name: Set up Python
         uses: actions/setup-python@v2
