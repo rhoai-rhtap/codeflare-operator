@@ -12,9 +12,10 @@ jobs:
       - name: Checkout workflow repository
         uses: actions/checkout@v2
 
-      - name: Download Python script from test-automerger repository
+      - name: Download Python script and config file from test-automerger repository
         run: |
           curl -o pr.py https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/pr.py
+          curl -o repos.json https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/repos.json
 
       - name: Set up Python
         uses: actions/setup-python@v2
