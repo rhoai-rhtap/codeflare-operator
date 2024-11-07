@@ -19,7 +19,6 @@ jobs:
           curl -O https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/requirements.txt
           curl -O https://raw.githubusercontent.com/rhoai-rhtap/RHOAI-Konflux-Automation/main/Konflux-auto-merger/pcam-release.yaml
           
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -33,6 +32,6 @@ jobs:
       - name: Run PR processing script
         env:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_GH }}
         run: |
           python pr.py
