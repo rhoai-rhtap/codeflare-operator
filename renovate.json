@@ -66,21 +66,5 @@
       }
     ]
   },
-  "rpm": {
-    "enabled": true,
-    "fileMatch": ["rpms.in.yaml", "rpms.lock.yaml"],
-    "postUpgradeTasks": {
-      "commands": ["rpm-lockfile-prototype rpms.in.yaml"],
-      "fileFilters": ["rpms.lock.yaml"]
-    },
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["minor", "patch"],
-        "groupName": "RPM Updates",
-        "automerge": true,
-        "commitMessageTopic": "RPM updates"
-      }
-    ]
-  },
   "prHourlyLimit": 0
 }
