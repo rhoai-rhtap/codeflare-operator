@@ -8,7 +8,6 @@ ARG CI_CONTAINER_VERSION="unknown"
 
 FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:v1.22.2@sha256:9576ac41e16b2262d2871a4064394d650d73221ceb07d1877772fbe98c6f0b6f AS golang
 
-
 FROM registry.access.redhat.com/ubi8/ubi:latest AS builder
 
 ARG GOLANG_VERSION=1.22.2
