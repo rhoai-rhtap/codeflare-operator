@@ -22,7 +22,7 @@ jobs:
       # Step 1: Clone the repository containing releases.yaml
       - name: Clone releases repository
         run: |
-          git clone https://github.com/MohammadiIram/test-automerger/blob/main/releases.yaml
+          git clone https://github.com/MohammadiIram/test-automerger.git
           echo "Releases repository cloned."
 
       # Step 2: Load releases.yaml and check branch
@@ -32,7 +32,7 @@ jobs:
           import yaml
 
           # Load allowed releases from releases.yaml in the cloned repo
-          with open("your-repo-with-releases/releases.yaml", "r") as f:
+          with open("test-automerger/releases.yaml", "r") as f:
               releases_config = yaml.safe_load(f)
           
           # Get the base branch of the PR
