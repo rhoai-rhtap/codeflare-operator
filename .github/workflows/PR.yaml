@@ -1,37 +1,65 @@
-name: PR Trigger
-
+name: Process PR
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [opened]
 
 jobs:
   process_pr:
     runs-on: ubuntu-latest
+    env:
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - name: Checkout workflow repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Download Python script, repos.json, and requirements.txt
-        run: |
-          curl -O https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/pr.py
-          curl -O https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/repos.json
-          curl -O https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/requirements.txt
-          curl -O https://raw.githubusercontent.com/MohammadiIram/test-automerger/main/releases.yaml
-          
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
-          
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python-version: '3.x'
 
-      - name: Run PR processing script
-        env:
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.TOKEN_GH }}
+      # Step 1: Clone the repository containing releases.yaml
+      - name: Clone releases repository
         run: |
-          python pr.py
+          git clone https://github.com/MohammadiIram/test-automerger/blob/main/releases.yaml
+          echo "Releases repository cloned."
+
+      # Step 2: Load releases.yaml and check branch
+      - name: Load releases.yaml and check branch
+        id: branch_check
+        run: |
+          import yaml
+
+          # Load allowed releases from releases.yaml in the cloned repo
+          with open("your-repo-with-releases/releases.yaml", "r") as f:
+              releases_config = yaml.safe_load(f)
+          
+          # Get the base branch of the PR
+          base_branch = "${{ github.event.pull_request.base.ref }}"
+
+          # Check if base_branch is in allowed releases
+          allowed_releases = releases_config.get("releases", [])
+          if base_branch not in allowed_releases:
+              print(f"Branch '{base_branch}' is not in allowed releases. Exiting.")
+              exit(1)
+          else:
+              print(f"Branch '{base_branch}' is allowed. Proceeding.")
+
+      # Step 3: Check if PR author is not 'red-hat-konflux[bot]'
+      - name: Check PR author
+        id: author_check
+        run: |
+          pr_author="${{ github.event.pull_request.user.login }}"
+          if [ "$pr_author" == "red-hat-konflux[bot]" ]; then
+            echo "PR author is 'red-hat-konflux[bot]'. Exiting."
+            exit 1
+          else
+            echo "PR author is '$pr_author'. Proceeding."
+          fi
+
+      # Step 4: Run the Python script with PR ID if checks passed
+      - name: Run Python script with PR ID
+        if: ${{ steps.branch_check.outcome == 'success' && steps.author_check.outcome == 'success' }}
+        run: |
+          python your_script.py --pr-id ${{ github.event.pull_request.number }}
