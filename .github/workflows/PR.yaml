@@ -68,10 +68,8 @@ jobs:
           owner: MohammadiIram
           workflow: PR.yaml 
           token: ${{ secrets.PAT_TOKEN }}
-          workflow-inputs: |
-            {
-              "pr_id": "${{ github.event.pull_request.number }}"
-            }
+          workflow-inputs: '{"pr_id": "${{ github.event.pull_request.number }}"}' 
+          ref: 'main'
 
       - name: Display the triggered Workflow Run Info
         run: |
