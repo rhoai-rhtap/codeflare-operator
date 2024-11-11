@@ -68,7 +68,7 @@ jobs:
           owner: MohammadiIram
           ref: ${{ github.event.pull_request.head.ref }}  # The branch that triggered the PR
           workflow: PR.yaml  # The workflow file
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN }}
           workflow-inputs: |
             {
               "pr_id": "${{ github.event.pull_request.number }}"
