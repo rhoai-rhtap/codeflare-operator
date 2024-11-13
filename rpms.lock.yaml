@@ -720,7 +720,7 @@ arches:
     sourcerpm: zlib-1.2.11-25.el8.src.rpm
   source: []
   module_metadata:
-  - url: https://cdn-ubi.redhat.com/content/public/ubi/dist/ubi8/8/x86_64/appstream/os/repodata/902aeeaa3dcd8675eeeb2daa8af1b6d5bfac9356476e0aef08b4b3db628308e2-modules.yaml.gz
+  - url: https://cdn-ubi.redhat.com/content/public/ubi/dist/ubi8/8/x86_64/appstream/os/repodata/4772939403080176f63a57fe5319999b7f7104d696e4edad499b500f2d9f8c3c-modules.yaml.gz
     repoid: ubi-8-appstream-rpms
     size: 59037
-    checksum: sha256:902aeeaa3dcd8675eeeb2daa8af1b6d5bfac9356476e0aef08b4b3db628308e2
+    checksum: sha256:4772939403080176f63a57fe5319999b7f7104d696e4edad499b500f2d9f8c3c
