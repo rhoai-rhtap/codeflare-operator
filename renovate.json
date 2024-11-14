@@ -4,7 +4,7 @@
     "config:recommended"
   ],
   "branchPrefix": "renovate/",
-  "baseBranches": ["main"],  // Keep main as the base branch for other updates
+  "baseBranches": ["main"],  // Default base branch
   "ignoreTests": true,
   "automergeType": "pr",
   "automerge": true,
@@ -29,6 +29,7 @@
     ]
   },
   "tekton": {
+    "baseBranches": ["rhoai-2.13"],  // Add this line to specify rhoai-2.13 for Tekton updates
     "fileMatch": [
       "\\.yaml$",
       "\\.yml$"
@@ -46,7 +47,7 @@
         "groupName": "Konflux references",
         "branchPrefix": "konflux/references/",
         "group": {
-          "branchTopic": "rhoai-2.13",  // Use rhoai-2.13 for Tekton
+          "branchTopic": "rhoai-2.13",  
           "commitMessageTopic": "{{{groupName}}}"
         },
         "commitMessageTopic": "Konflux references",
