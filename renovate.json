@@ -25,8 +25,8 @@
     "enabled": true,
     "additionalBranchPrefix": "{{baseBranch}}/",
     "branchPrefix": "konflux/mintmaker/",
-     "packageRules": [
-     {
+    "packageRules": [
+      {
         "matchUpdateTypes": ["*"],
         "enabled": false
       },
@@ -80,5 +80,17 @@
       }
     ]
   },
- "prHourlyLimit": 0
+  "prHourlyLimit": 0,
+  "webhooks": [
+    {
+      "url": "https://hooks.slack.com/services/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",
+      "body": {
+        "text": ":renovatebot: A new PR has been created by Renovate!\n*Repository:* {{repository}}\n*Branch:* {{branchName}}\n*PR Title:* {{prTitle}}\n*PR URL:* {{prUrl}}"
+      },
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    }
+  ]
 }
