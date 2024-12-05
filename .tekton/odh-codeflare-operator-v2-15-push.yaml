@@ -263,6 +263,13 @@ spec:
       - name: IMAGES
         value:
         - $(tasks.build-container.results.IMAGE_URL)@$(tasks.build-container.results.IMAGE_DIGEST)
+      - name: LABELS
+        value:
+        - version=v2.14.0
+        - url=$(params.git-url)
+        - release=$(tasks.clone-repository.results.commit-timestamp)
+        - git.url=$(params.git-url)
+        - git.commit=$(params.revision)
       runAfter:
       - build-container
       taskRef:
