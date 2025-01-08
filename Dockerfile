@@ -1,28 +1,8 @@
 # Build arguments
 ARG SOURCE_CODE=.
-ARG CI_CONTAINER_VERSION="unknown"
-#test-automerger
-#FROM registry-proxy.engineering.redhat.com/rh-osbs/openshift-golang-builder@sha256:9576ac41e16b2262d2871a4064394d650d73221ceb07d1877772fbe98c6f0b6f AS golang
+#test-2.13-1
 
-FROM registry-proxy.engineering.redhat.com/rh-osbs/openshift-golang-builder:v1.22.2@sha256:9576ac41e16b2262d2871a4064394d650d73221ceb07d1877772fbe98c6f0b6f AS golang
-
-#FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:v1.22.2@sha256:9576ac41e16b2262d2871a4064394d650d73221ceb07d1877772fbe98c6f0b6f AS golang
-
-FROM registry.access.redhat.com/ubi8/ubi:latest AS builder
-
-ARG GOLANG_VERSION=1.22.2
-
-RUN dnf upgrade -y && dnf install -y \
-   gcc \
-   make \
-   openssl-devel \
-   git \
-  && dnf clean all && rm -rf /var/cache/yum
-
-# Install Go
-ENV PATH=/usr/local/go/bin:$PATH
-
-COPY --from=golang /usr/lib/golang /usr/local/go
+FROM registry.access.redhat.com/ubi8/go-toolset:1.22@sha256:5c10b78538a4a301ee2c38f35c49fcc20363343dfe5cd94cf51bd4128357efc8 AS builder
 
 WORKDIR /workspace
 
@@ -36,7 +16,6 @@ RUN go mod download
 # Copy the go source
 COPY . .
 
-
 # Copy the Go sources
 COPY main.go main.go
 COPY pkg/ pkg/
@@ -48,8 +27,7 @@ USER root
 
 RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -tags strictfipsruntime -a -o manager main.go
 
-
-FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
+FROM registry.access.redhat.com/ubi8/ubi-minimal@sha256:cf095e5668919ba1b4ace3888107684ad9d587b1830d3eb56973e6a54f456e67
 WORKDIR /
 COPY --from=builder /workspace/manager .
 
