@@ -12,7 +12,7 @@ metadata:
       == "rhoai-2.15"
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: rhoai-v2-13
+    appstudio.openshift.io/application: rhoai-v2-15
     appstudio.openshift.io/component: odh-codeflare-operator-v2-13
     pipelines.appstudio.openshift.io/type: build
   name: odh-codeflare-operator-v2-13-on-push

@@ -11,7 +11,7 @@ metadata:
       == "rhoai-2.15"
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: rhoai-v2-13
+    appstudio.openshift.io/application: rhoai-v2-15
     appstudio.openshift.io/component: odh-codeflare-operator-v2-13
     pipelines.appstudio.openshift.io/type: build
   name: odh-codeflare-operator-v2-13-on-pull-request
@@ -23,7 +23,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/rhoai-tenant/rhoai-v2-13/odh-codeflare-operator-v2-13:on-pr-{{revision}}
+    value: quay.io/redhat-user-workloads/rhoai-tenant/rhoai-v2-15/odh-codeflare-operator-v2-13:on-pr-{{revision}}
   - name: image-expires-after
     value: 5d
   - name: dockerfile
