@@ -236,7 +236,7 @@ spec:
         value: $(params.build-args-file)
       - name: LABELS
         value:
-          - version=v2.15.0
+          - version=v2.15.1
           - git.url=$(params.git-url)
           - git.commit=$(params.revision)
       runAfter:
