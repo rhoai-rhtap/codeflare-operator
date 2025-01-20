@@ -63,7 +63,7 @@ jobs:
         id: app-token
         uses: getsentry/action-github-app-token@v2
         with:
-          app_id: ${{ secrets.PCAM_ID }}
+          app_id: ${{ secrets.PCAM_APP_ID }}
           private_key: ${{ secrets.PCAM_KEY }}
 
       # Step 4: Trigger the other workflow in the test-automerger repository
