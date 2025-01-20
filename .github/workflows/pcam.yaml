@@ -58,7 +58,10 @@ jobs:
           else
             echo "PR author is '$pr_author'. Proceeding."
           fi
-
+          
+  trigger-another-workflow:
+    runs-on: ubuntu-latest
+    steps:
       - name: Generate github-app token
         id: app-token
         uses: getsentry/action-github-app-token@v2
@@ -78,7 +81,7 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           workflow-inputs: '{"pr_id": "${{ github.event.pull_request.number }}", "repo": "${{ github.event.repository.name }}"}'
           ref: 'main'
-          #discover: true  # This allows the action to discover the run id and URL from the triggered workflow
+          discover: true  # This allows the action to discover the run id and URL from the triggered workflow
           
       - name: Echo Run ID and Run URL
         run: |
