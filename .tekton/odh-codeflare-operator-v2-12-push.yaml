@@ -9,6 +9,7 @@ metadata:
     pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
       == "rhoai-2.12"
       && !"bundle/manifests/rhods-operator.clusterserviceversion.yml".pathChanged()
+      && ( !".tekton/**".pathChanged() || ".tekton/odh-codeflare-operator-v2-12-push.yaml".pathChanged() )
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: rhoai-v2-12
