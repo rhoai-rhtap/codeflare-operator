@@ -165,7 +165,7 @@ spec:
         - name: name
           value: git-clone
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-git-clone:0.1@sha256:3ced9a6b9d8520773d3ffbf062190515a362ecda11e72f56e38e4dd980294b57
+          value: quay.io/konflux-ci/tekton-catalog/task-git-clone:0.1@sha256:eca6b8106b6ec1ea4b03d196c007928c57a0683ea1ce068e8f34f9b9bef3387d
         - name: kind
           value: task
         resolver: bundles
@@ -190,7 +190,7 @@ spec:
         - name: name
           value: prefetch-dependencies
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-prefetch-dependencies:0.1@sha256:8b3f813797c093b629a11adb6f8c77bc72929393e73c382bbedfc5b4e2c4acd5
+          value: quay.io/konflux-ci/tekton-catalog/task-prefetch-dependencies:0.1@sha256:b0f19fe021457caeda126e861d08ad59007f64f954119e2531f7786bd76f98c7
         - name: kind
           value: task
         resolver: bundles
