@@ -312,7 +312,7 @@ spec:
         - name: name
           value: clair-scan
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-clair-scan:0.2@sha256:893ffa3ce26b061e21bb4d8db9ef7ed4ddd4044fe7aa5451ef391034da3ff759
+          value: quay.io/konflux-ci/tekton-catalog/task-clair-scan:0.2@sha256:076d5cde62b55bbfcdda2b4782392256bbda5ad38f839013b4330b3aba70a973
         - name: kind
           value: task
         resolver: bundles
@@ -401,7 +401,7 @@ spec:
         - name: name
           value: sbom-json-check
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-sbom-json-check:0.2@sha256:41ed5a4c1db1aa8bf5002dcaaf438baec1b40532ec570f9fb62ae5593aa0b20e
+          value: quay.io/konflux-ci/tekton-catalog/task-sbom-json-check:0.2@sha256:c02bad6000fee00e9e34c438838e3b8cb7db3f3cbd64807748f206f801ad7d6e
         - name: kind
           value: task
         resolver: bundles
