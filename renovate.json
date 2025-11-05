@@ -16,46 +16,57 @@
     "enabled": false
   },
   "branchPrefix": "renovate/",
-  "baseBranches": ["main"],
+  "baseBranchPatterns": [
+    "main"
+  ],
   "ignoreTests": true,
   "automergeType": "pr",
   "automerge": true,
-  "enabledManagers": ["dockerfile", "tekton"],
+  "enabledManagers": [
+    "dockerfile",
+    "tekton"
+  ],
   "dockerfile": {
     "enabled": true,
     "additionalBranchPrefix": "{{baseBranch}}/",
     "branchPrefix": "konflux/mintmaker/",
-     "packageRules": [
-     {
-        "matchUpdateTypes": ["*"],
+    "packageRules": [
+      {
+        "matchUpdateTypes": [
+          "*"
+        ],
         "enabled": false
       },
       {
-        "matchUpdateTypes": ["digest"],
-        "matchFileNames": ["*Dockerfile.konflux*"],
+        "matchUpdateTypes": [
+          "digest"
+        ],
+        "matchFileNames": [
+          "*Dockerfile.konflux*"
+        ],
         "enabled": true
       }
     ]
   },
   "tekton": {
-    "fileMatch": [
-      "\\.yaml$",
-      "\\.yml$"
+    "managerFilePatterns": [
+      "/\\.yaml$/",
+      "/\\.yml$/"
     ],
     "includePaths": [
       ".tekton/**"
     ],
     "packageRules": [
       {
-        "matchUpdateTypes": ["*"],
+        "matchUpdateTypes": [
+          "*"
+        ],
         "enabled": false
       },
       {
-        "matchPackagePatterns": [
-          "^quay.io/redhat-appstudio-tekton-catalog/",
-          "^quay.io/konflux-ci/tekton-catalog/"
+        "matchUpdateTypes": [
+          "digest"
         ],
-        "matchUpdateTypes": ["digest"],
         "enabled": true,
         "groupName": "Konflux references",
         "branchPrefix": "konflux/references/",
@@ -76,9 +87,13 @@
         },
         "prBodyTemplate": "{{{header}}}{{{table}}}{{{notes}}}{{{changelogs}}}{{{controls}}}{{{footer}}}",
         "recreateWhen": "always",
-        "rebaseWhen": "behind-base-branch"
+        "rebaseWhen": "behind-base-branch",
+        "matchPackageNames": [
+          "/^quay.io/redhat-appstudio-tekton-catalog//",
+          "/^quay.io/konflux-ci/tekton-catalog//"
+        ]
       }
     ]
   },
- "prHourlyLimit": 0
+  "prHourlyLimit": 0
 }
