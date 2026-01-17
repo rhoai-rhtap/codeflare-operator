@@ -6,7 +6,7 @@ require (
 	github.com/go-logr/logr v1.4.2
 	github.com/onsi/ginkgo/v2 v2.23.0
 	github.com/onsi/gomega v1.36.2
-	github.com/open-policy-agent/cert-controller v0.12.0
+	github.com/open-policy-agent/cert-controller v0.15.0
 	github.com/opendatahub-io/opendatahub-operator/v2 v2.10.0
 	github.com/openshift/api v0.0.0-20240904015708-69df64132c91
 	github.com/openshift/client-go v0.0.0-20240904130219-3795e907a202
